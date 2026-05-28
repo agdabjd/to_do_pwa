@@ -43,6 +43,9 @@ Durante seu desenvolvimento foram contempladas as etapas de instalação, ativa�
 
 Após o primeiro carregamento da aplicação, os recursos principais permanecem armazenados localmente. Dessa forma, mesmo sem acesso à internet, o usuário continua podendo acessar e utilizar normalmente a lista de tarefas.
 
+<img width="1891" height="1073" alt="image" src="https://github.com/user-attachments/assets/f1805736-74ca-487d-a479-31ce9cbddfd8" />
+
+
 ## Considerações finais
 
 O desenvolvimento desta atividade possibilitou a aplicação prática dos conceitos fundamentais relacionados às Progressive Web Apps, especialmente no que se refere ao ciclo de vida do Service Worker, armazenamento local, cache de recursos e funcionamento offline, demonstrando como aplicações web podem apresentar características semelhantes às de aplicativos nativos.
