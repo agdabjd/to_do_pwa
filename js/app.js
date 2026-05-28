@@ -9,17 +9,22 @@ function saveTasks() {
 }
 
 function loadTasks() {
+
     const storedTasks = localStorage.getItem("tasks");
+
     if (storedTasks) {
         tasks = JSON.parse(storedTasks);
     }
+
     renderTasks();
 }
 
 function renderTasks() {
+
     todoList.innerHTML = "";
 
     tasks.forEach((task, index) => {
+
         const taskItem = document.createElement("article");
         taskItem.classList.add("task-item");
 
@@ -43,26 +48,33 @@ function renderTasks() {
         deleteButton.innerHTML = "✖";
 
         completeButton.addEventListener("click", () => {
+
             tasks[index].completed = !tasks[index].completed;
+
             saveTasks();
             renderTasks();
         });
 
         deleteButton.addEventListener("click", () => {
+
             tasks.splice(index, 1);
+
             saveTasks();
             renderTasks();
         });
 
         actionsDiv.appendChild(completeButton);
         actionsDiv.appendChild(deleteButton);
+
         taskItem.appendChild(textSpan);
         taskItem.appendChild(actionsDiv);
+
         todoList.appendChild(taskItem);
     });
 }
 
 function addTask() {
+
     const taskText = taskInput.value.trim();
 
     if (taskText === "") {
@@ -76,8 +88,10 @@ function addTask() {
     };
 
     tasks.push(newTask);
+
     saveTasks();
     renderTasks();
+
     taskInput.value = "";
     taskInput.focus();
 }
@@ -85,9 +99,28 @@ function addTask() {
 addTaskButton.addEventListener("click", addTask);
 
 taskInput.addEventListener("keypress", (event) => {
+
     if (event.key === "Enter") {
         addTask();
     }
 });
 
 loadTasks();
+
+if ("serviceWorker" in navigator) {
+
+    window.addEventListener("load", () => {
+
+        navigator.serviceWorker
+            .register("./service-worker.js")
+
+            .then(() => {
+                console.log("Service Worker registrado");
+            })
+
+            .catch((error) => {
+                console.log("Erro ao registrar Service Worker:", error);
+            });
+
+    });
+}
